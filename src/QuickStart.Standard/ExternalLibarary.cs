@@ -12,5 +12,8 @@ namespace QuickStart.Standard
         {
             return await Task.Run(() =>JsonConvert.SerializeObject(_library.GetPerson(), Formatting.Indented));
         }
-    }
+		public async Task<object> GetServerTime(dynamic input) {
+			return await Task.Run(() => JsonConvert.SerializeObject(_library.GetServerTime(), Formatting.Indented));
+		}
+	}
 }

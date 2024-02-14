@@ -47,6 +47,12 @@ var getPerson = edge.func({
     methodName: 'GetPersonInfo'
 });
 
+var getServerTime = edge.func({
+    assemblyFile: baseDll,
+    typeName: externalTypeName,
+    methodName: 'GetServerTime'
+});
+
 
 console.log('### Calling local methods from ' + namespace +'.dll')
 console.log();
@@ -88,6 +94,11 @@ getPerson('', function(error, result) {
     if (error) throw error;
     console.log(externalTypeName + '.GetPersonInfo');
     console.log(result);
+});
+getServerTime('', function(error, result) {
+    if (error) throw error;
+    console.log(externalTypeName + '.GetServerTime');
+    console.log(GetServerTime);
 });
 
 
