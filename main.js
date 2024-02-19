@@ -4,9 +4,11 @@ var namespace = 'QuickStart.' + net.charAt(0).toUpperCase() + net.substr(1);
 if(net === 'core' || net === 'fsharp') net = '';
 var version = net == 'standard' ? '2.1' : '7.0'
 
-const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ net + version);
+//const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ net + version);
+const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Release/net'+ net + version + '/win-x64');
 
 process.env.EDGE_USE_CORECLR = 1;
+//process.env.EDGE_DEBUG = 1;
 if(net !== 'standard')
     process.env.EDGE_APP_ROOT = baseNetAppPath;
 
@@ -90,15 +92,17 @@ try{
 console.log();
 console.log('### Calling external library methods using '+ namespace +'.dll wrapper');
 console.log();
+
 getPerson('', function(error, result) {
     if (error) throw error;
     console.log(externalTypeName + '.GetPersonInfo');
     console.log(result);
 });
+
 getServerTime('', function(error, result) {
     if (error) throw error;
     console.log(externalTypeName + '.GetServerTime');
-    console.log(GetServerTime);
+    console.log(result);
 });
 
 
